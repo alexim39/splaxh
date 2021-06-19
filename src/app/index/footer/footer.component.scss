@@ -1,0 +1,26 @@
+footer {
+    height: auto;
+    padding: 1rem 0;
+    background-color: gainsboro;
+    border-top: 1px solid white;
+    .copyright {
+        a {
+            text-decoration: none;
+            color: #283593;
+        }
+        div {
+            font-weight: 100;
+        }
+    }
+    .socials {
+        .facebook {
+            background-color: #4267B2;
+        }
+        .youtube {
+            background-color: #FF0000;
+        }
+        /* .instagram {
+            background-color: #8a3ab9;
+        } */
+    }
+}

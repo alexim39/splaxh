@@ -1,0 +1,29 @@
+header {
+    height: 5rem;
+    color: #2c2f41;
+    background-color: whitesmoke;
+    border-top: 1px solid white;
+    font-weight: bold;
+    div {
+        font-family: "Courier";
+        font-size: 20px;
+    }
+}
+
+
+.blink {
+    border-right-style: solid;
+    opacity: 0;
+    animation: blinking 1s linear infinite;
+}
+
+@keyframes blinking {
+    from,
+    49.9% {
+      opacity: 0;
+    }
+    50%,
+    to {
+      opacity: 1;
+    }
+}

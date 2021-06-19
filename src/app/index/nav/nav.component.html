@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <splaxh-logo></splaxh-logo>
+
+        <span class="spacer"></span>
+        
+        <div *ngIf="!deviceXs">
+            <a mat-button [routerLink]="['/#']">Home</a>
+            <a mat-button [routerLink]="['/#']">Upload Music</a>
+            <a mat-button (click)="openDialog()">Sign In</a>
+        </div>
+        <a mat-icon-button [matMenuTriggerFor]="menu" class="info">
+            <mat-icon>more_vert</mat-icon>
+        </a>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item routerLink="/#"><mat-icon>question_answer</mat-icon> FAQs</a>
+            <a mat-menu-item routerLink="/contacts"><mat-icon>contacts</mat-icon> Contacts</a>
+        </mat-menu>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="deviceXs">
+        <a mat-button [routerLink]="['/#']">Home</a>
+        <a mat-button [routerLink]="['/#']">Upload Music</a>
+        <a mat-button (click)="openDialog()">Sign In</a>
+    </mat-toolbar-row>
+</mat-toolbar>

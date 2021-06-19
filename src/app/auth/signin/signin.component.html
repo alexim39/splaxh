@@ -1,0 +1,28 @@
+<section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2rem">
+    <div class="header">
+        <h2>SplaxH Sign In</h2>
+        <div>Sign in your account to continue</div>
+    </div>
+    
+    <form>
+        <mat-form-field>
+          <mat-label>Email address</mat-label>
+          <input matInput>
+        </mat-form-field>
+      
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <span mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </span>
+        </mat-form-field>
+    
+        <button mat-flat-button color="primary">Sign in</button>
+    </form>
+    
+    <div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+        <a [routerLink]="['/signup']" [mat-dialog-close] mat-button color="primary">Create account</a>
+        <button mat-button color="primary">Forgot password?</button>
+    </div>
+</section>

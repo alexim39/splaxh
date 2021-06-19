@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Snackbar success
+.success {
+    //background: #43a047  !important;
+    color: #55df5c;
+    font-size: small;
+}
+// Snackbar error
+.error {
+    //background: #c62828 !important;
+    color: #ffa8a8;
+    font-size: small;
+}
+// Snackbar warn
+.warn {
+    //background: #c62828 !important;
+    color: #daca3b;
+    font-size: small;
+}
+
+// set nav color
+/* mat-toolbar[color="primary"] {
+    background-color: #fff !important;
+} */
