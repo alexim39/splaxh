@@ -1,18 +1,29 @@
 footer {
     height: auto;
     padding: 1rem 0;
-    background-color: gainsboro;
-    border-top: 1px solid white;
+    //background-color: #283593;
+    //border-top: 1px solid rgb(92, 91, 91);
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     .copyright {
         a {
             text-decoration: none;
-            color: #283593;
+            color: whitesmoke;
         }
         div {
             font-weight: 100;
+            color: whitesmoke;
         }
     }
     .socials {
+        button {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
         .facebook {
             background-color: #4267B2;
         }

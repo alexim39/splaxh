@@ -1,0 +1,45 @@
+section {
+    background-color:#eee;      
+    mat-card {
+        margin: 6rem 0;
+        padding: 1.8rem 1.5rem;
+        width: 30%;
+        color: grey;
+        mat-card-header {
+            margin-bottom: 1rem;
+            img {
+                background-size: cover;
+                border-radius: 50%;
+                width: 8rem;
+            }
+        }
+        mat-card-content {
+            form {
+                mat-form-field {
+                    width: 100%;
+                    margin-bottom: 1.5rem;
+                    div {
+                        cursor: pointer;
+                    }
+                }
+                small {
+                    margin-bottom: 1rem;
+                    color: rgb(51, 44, 143);
+                }
+                button {
+                    margin-top: 1rem;
+                }
+            }
+        }
+        mat-card-actions {
+            a {
+                font-weight: normal;
+                font-size: 0.7rem;
+                mat-icon {
+                    font-size: 12px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

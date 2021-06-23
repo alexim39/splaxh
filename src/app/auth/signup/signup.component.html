@@ -1,1 +1,78 @@
-<p>signup works!</p>
+<section fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+      <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+        <img src="./../../../../assets/img/profile.jpg">
+        <!-- <small *ngIf="user">{{user.lastname | titlecase}} {{user.firstname | titlecase}}</small> -->
+        <!-- <small *ngIf="!user">Wager logon</small> -->
+        <small>SplaxH Sign up</small>
+      </mat-card-header>
+      <mat-card-content>                
+            
+        <form [formGroup]="form" (ngSubmit)="onSignIn(form.value)">
+          <mat-form-field>
+              <mat-label>Enter first name</mat-label>
+              <input matInput formControlName="firstname">
+              <mat-error *ngIf="form.get('firstname').hasError('required')">
+                Your firstname is required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Enter last name</mat-label>
+              <input matInput formControlName="lastname">
+              <mat-error *ngIf="form.get('lastname').hasError('required')">
+                Your lastname is required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Enter phone number</mat-label>
+              <input matInput formControlName="phone" maxlength="11">
+              <mat-error *ngIf="form.get('phone').hasError('required')">
+                Your phone number is required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Enter email address</mat-label>
+              <input matInput type="email" formControlName="email">
+              <mat-error *ngIf=" form.get('email').hasError('email')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="form.get('email').hasError('required')">
+                Your email is required
+              </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <mat-label>Enter password</mat-label>
+            <input matInput [type]="passwordHide ? 'password' : 'text'" formControlName="password">
+            <mat-hint>Password must be at least 8 characters long!</mat-hint>
+            <div mat-icon-button matSuffix (click)="passwordHide = !passwordHide">
+              <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
+            <mat-error *ngIf=" form.get('password').hasError('pattern')">
+              Password should be minimum of 8 characters
+            </mat-error>
+            <mat-error *ngIf=" form.get('password').hasError('required')">
+              Your password is required
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <small>
+              By signing up, you accept the terms of service binding the use of this platform
+            </small>
+          </div>
+            
+          <button [disabled]="form.invalid || isSpinning" mat-flat-button color="accent">
+            <img *ngIf="isSpinning" src="./../../../../assets/img/spinner.gif">
+            SIGN UP</button>
+        </form>
+    
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+        <a matTooltip="Sign in" mat-button (click)="openDialog()"><mat-icon>password</mat-icon> I already have account</a> 
+      </mat-card-actions>
+    </mat-card>
+  </section>

@@ -4,6 +4,7 @@ import { IndexContentComponent } from './index-content/index-content.component';
 import { IndexComponent } from './index.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignupComponent } from '../auth/signup/signup.component';
+import { UploadsComponent } from './uploads/uploads.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', component: IndexContentComponent },
       { path: 'contacts', component: ContactComponent },
-      { path: 'signup', component: SignupComponent }
+      { path: 'signup', component: SignupComponent },
+      { path: 'uploads', component: UploadsComponent }
     ]
   }
 ];

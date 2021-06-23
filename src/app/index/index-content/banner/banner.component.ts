@@ -9,21 +9,23 @@ import { MatCarousel, MatCarouselComponent } from '@ngbmodule/material-carousel'
 })
 export class BannerComponent implements OnInit {
 
+  //auto = '50vh'
+
   slides = [
     {
-      image: './../../../../assets/img/banner1.jpg'
+      image: './../../../../assets/img/b1.jpg'
     },
     /* {
       image: './../../../../assets/img/banner2.jpg'
     }, */
     {
-      image: './../../../../assets/img/banner3.jpg'
+      image: './../../../../assets/img/b2.jpg'
     },
     {
-      image: './../../../../assets/img/banner4.jpg'
+      image: './../../../../assets/img/b3.jpg'
     },
     {
-      image: './../../../../assets/img/banner.jpg'
+      image: './../../../../assets/img/b4.jpg'
     }
   ]
 

@@ -5,9 +5,18 @@
         <span class="spacer"></span>
         
         <div *ngIf="!deviceXs">
-            <a mat-button [routerLink]="['/#']">Home</a>
-            <a mat-button [routerLink]="['/#']">Upload Music</a>
-            <a mat-button (click)="openDialog()">Sign In</a>
+            <a mat-button [routerLink]="['/']">Home</a>
+            <a mat-button [routerLink]="['/uploads']">Upload Music</a>
+            <a mat-button (click)="openDialog()" *ngIf="!authService.isLoggedIn()">Sign In</a>
+
+            <button mat-button [matMenuTriggerFor]="menu" *ngIf="authService.isLoggedIn()">Imenwo Alex</button>
+            <mat-menu #menu="matMenu">
+            <!-- <button mat-menu-item>Item</button> -->
+            <button mat-menu-item (click)="signOut()">
+                <mat-icon>settings_power</mat-icon>
+                Sign out
+            </button>
+            </mat-menu>
         </div>
         <a mat-icon-button [matMenuTriggerFor]="menu" class="info">
             <mat-icon>more_vert</mat-icon>
@@ -20,7 +29,7 @@
 
     <mat-toolbar-row *ngIf="deviceXs">
         <a mat-button [routerLink]="['/#']">Home</a>
-        <a mat-button [routerLink]="['/#']">Upload Music</a>
-        <a mat-button (click)="openDialog()">Sign In</a>
+        <a mat-button [routerLink]="['/uploads']">Upload Music</a>
+        <a mat-button (click)="openDialog()" *ngIf="!authService.isLoggedIn()">Sign In</a>
     </mat-toolbar-row>
 </mat-toolbar>

@@ -17,6 +17,7 @@ import { SupportersComponent } from './index-content/supporters/supporters.compo
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { AuthModule } from './../auth/auth.module';
 import { RouterModule } from '@angular/router';
+import { UploadsComponent } from './uploads/uploads.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RouterModule } from '@angular/router';
     BannerComponent,
     CountdownComponent,
     SupportersComponent,
+    UploadsComponent,
 
   ],
   imports: [

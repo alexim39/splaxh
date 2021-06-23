@@ -1,11 +1,18 @@
 @media only screen and (max-width:800px) {
     /* For tablets: */
-   
+    header {
+        bottom: 90px;
+        padding: 2rem;
+        font-size: 12px !important;
+    }
 
 }
 
-
 @media only screen and (max-width:500px) {
     /* For mobile phones: */
-      
+    header {
+        bottom: 210px;
+        padding: 2rem;
+        font-size: 12px !important;
+    }
 }
