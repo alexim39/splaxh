@@ -18,6 +18,13 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { AuthModule } from './../auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { UploadsComponent } from './uploads/uploads.component';
+import { AuthGuard } from '../auth/auth.guard';
+import { FaqComponent } from './faq/faq.component';
+import { AudioComponent } from './uploads/audio/audio.component';
+import { VideoComponent } from './uploads/video/video.component';
+import { UploadsService } from './uploads/uploads.service';
+import { ContactService } from './contact/contact.service';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +38,9 @@ import { UploadsComponent } from './uploads/uploads.component';
     CountdownComponent,
     SupportersComponent,
     UploadsComponent,
+    FaqComponent,
+    AudioComponent,
+    VideoComponent,
 
   ],
   imports: [
@@ -44,6 +54,6 @@ import { UploadsComponent } from './uploads/uploads.component';
     AuthModule,
     RouterModule
   ],
-  providers: []
+  providers: [AuthGuard, UploadsService, ContactService]
 })
 export class LandingPageModule { }

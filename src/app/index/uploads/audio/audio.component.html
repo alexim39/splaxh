@@ -1,0 +1,70 @@
+<section fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <header>
+        <div class="head">UPLOAD YOUR MEDIA FILES</div>
+        <div class="body">An active profile and subscription is required for audio upload</div>
+    </header>
+    
+    <mat-card>
+        <div class="mat-h3"></div>
+        <form class="mat-elevation-z24" fxLayout="column" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <mat-form-field>
+                <mat-label>Stage name</mat-label>
+                <input matInput formControlName="stageName">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Track title</mat-label>
+                <input matInput formControlName="trackTitle">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Track category</mat-label>
+                <mat-select formControlName="trackCategory">
+                    <mat-option></mat-option>
+                    <!-- <mat-option>Select category</mat-option> -->
+                    <mat-option value="African hip ho">African hip hop</mat-option>
+                    <mat-option value="Afro-soul">Afro-soul</mat-option>
+                    <mat-option value="Afrobeat">Afrobeat</mat-option>
+                    <mat-option value="Afro house">Afro house</mat-option>
+                    <mat-option value="Azonto">Azonto</mat-option>
+                    <mat-option value="Blues">Blues</mat-option>
+                    <mat-option value="Comedy">Comedy</mat-option>
+                    <mat-option value="Country">Country</mat-option>
+                    <mat-option value="Dance Hall">Dance Hall</mat-option>
+                    <mat-option value="Fuji music/Juju">Fuji music/Juju</mat-option>
+                    <mat-option value="Hip hop">Hip hop</mat-option>
+                    <mat-option value="Highlife">Highlife</mat-option>
+                    <mat-option value="Jazz">Jazz</mat-option>
+                    <mat-option value="Makossa">Makossa</mat-option>
+                    <mat-option value="Pop">Pop</mat-option>
+                    <mat-option value="R&B and soul">R&B and soul</mat-option>
+                    <mat-option value="Reggae">Reggae</mat-option>
+                    <mat-option value="Rock">Rock</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                    <!-- <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option> -->
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Short description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+
+            <label for="myfile">Select a file:</label>
+            <input type="file" id="audio" name="audio" (change)="onChange($event)" formControlName="audioFile" accept=".mp3,audio/*">
+            <br>
+
+            <button mat-raised-button color="primary" [disabled]="form.invalid || isSpinning">
+                <img *ngIf="isSpinning" src="./../../../../assets/img/spinner.gif">
+                SUBMIT AUDIO
+            </button>
+        </form>
+    </mat-card>
+</section>

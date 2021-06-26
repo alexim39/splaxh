@@ -1,0 +1,22 @@
+
+@media only screen and (max-width:800px) {
+    /* For tablets: */
+    section {
+        mat-card {
+            form {
+                width: auto;
+                //padding: 3rem;
+                mat-form-fiel {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}
+
+
+@media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    
+}

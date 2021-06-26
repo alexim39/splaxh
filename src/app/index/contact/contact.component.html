@@ -1,1 +1,36 @@
-contact
+<section fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <header>
+        <div class="head">Contact Us</div>
+        <div class="body">For Suggestions/Complaints fill the form below or email us at <a href="mailto:info@splaxh.com">info@splaxh.com</a></div>
+    </header>
+    
+    <mat-card>
+        <div class="mat-h3"></div>
+        <form class="mat-elevation-z24" fxLayout="column" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <mat-form-field>
+                <mat-label>Names</mat-label>
+                <input matInput formControlName="names">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Phone number</mat-label>
+                <input matInput formControlName="phone" maxlength="11">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email address</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Comment</mat-label>
+                <textarea matInput formControlName="comment"></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" [disabled]="form.invalid || isSpinning">
+                <img *ngIf="isSpinning" src="./../../../../assets/img/spinner.gif">
+                SUBMIT
+            </button>
+        </form>
+    </mat-card>
+</section>

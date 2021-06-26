@@ -40,11 +40,15 @@ export class SigninComponent implements OnInit {
           });
 
           localStorage.setItem('token', res.obj.token); // used to check if user is logged in
-          this.userService.setUser(res.obj.user)
+          localStorage.setItem('susr', JSON.stringify(res.obj.user))
           // close dialog
           this.thisDialogRef.close()
           // stop spinner
           this.isSpinning = false;
+
+          this.router.navigate(['/uploads']);
+          // reload navigation component
+          this.userService.reloadNavbar();
 
         }
       }, error => {

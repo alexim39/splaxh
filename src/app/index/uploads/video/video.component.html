@@ -1,0 +1,55 @@
+<section fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <header>
+        <div class="head">UPLOAD YOUR MEDIA FILES</div>
+        <div class="body">An active profile and subscription is required for video upload</div>
+    </header>
+    
+    <mat-card>
+        <div class="mat-h3"></div>
+        <form class="mat-elevation-z24" fxLayout="column" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <mat-form-field>
+                <mat-label>Stage name</mat-label>
+                <input matInput formControlName="stageName">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Video title</mat-label>
+                <input matInput formControlName="videoTitle">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Track category</mat-label>
+                <mat-select formControlName="videoCategory">
+                    <mat-option></mat-option>
+                    <!-- <mat-option>Select category</mat-option> -->
+                    <mat-option value="Dance video">Dance video</mat-option>
+                    <mat-option value="Music video">Music video</mat-option>
+                    <mat-option value="Sport video">Sport video</mat-option>
+                    <!-- <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option>
+                    <mat-option></mat-option> -->
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Short description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Youtube URL</mat-label>
+                <input matInput placeholder="Copy this link from your Youtube page address bar" formControlName="youtubeURL">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" [disabled]="form.invalid || isSpinning">
+                <img *ngIf="isSpinning" src="./../../../../assets/img/spinner.gif">
+                SUBMIT VIDEO
+            </button>
+        </form>
+    </mat-card>
+</section>

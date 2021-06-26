@@ -4,7 +4,7 @@ footer {
     //background-color: #283593;
     //border-top: 1px solid rgb(92, 91, 91);
     background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
+    
     position: fixed;
     left: 0;
     bottom: 0;
@@ -12,14 +12,15 @@ footer {
     .copyright {
         a {
             text-decoration: none;
-            color: whitesmoke;
+            color: rgba(255, 255, 255, 0.5);
         }
         div {
             font-weight: 100;
-            color: whitesmoke;
+            color: rgba(255, 255, 255, 0.5);
         }
     }
     .socials {
+        opacity: 0.6;
         button {
             width: 2.5rem;
             height: 2.5rem;
@@ -33,5 +34,8 @@ footer {
         /* .instagram {
             background-color: #8a3ab9;
         } */
+    }
+    .socials:hover {
+        opacity: 1;
     }
 }

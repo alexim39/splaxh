@@ -5,12 +5,10 @@ section {
         padding: 1.8rem 1.5rem;
         width: 30%;
         color: grey;
-        mat-card-header {
-            margin-bottom: 1rem;
-            img {
-                background-size: cover;
-                border-radius: 50%;
-                width: 8rem;
+        .header {
+            text-align: center;
+            h2 {
+                margin-bottom: -2px;
             }
         }
         mat-card-content {

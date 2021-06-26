@@ -6,6 +6,8 @@ import { FormResetterService } from 'src/app/common/form-resetter.service';
 import { SignUpInterface, AuthService } from './../auth.service'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SigninComponent } from './../../auth/signin/signin.component'
+import { Router } from '@angular/router';
+import { UserService } from './../../common/user';
 
 @Component({
   selector: 'splaxh-signup',
@@ -24,7 +26,9 @@ export class SignupComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private formResetterService: FormResetterService
+    private router: Router,
+    private formResetterService: FormResetterService,
+    private userService: UserService
   ) { }
 
   onSignIn(forms: SignUpInterface) {
@@ -42,10 +46,17 @@ export class SignupComponent implements OnInit, OnDestroy {
         // reset form
         this.formResetterService.reset(this.form);
 
+        //localStorage.setItem('token', res.obj.token); // used to check if user is logged in
+        //localStorage.setItem('susr', JSON.stringify(res.obj.user))
+
+        // redirect to upload form
+        //this.router.navigate(['/upload']);
+        // reload navigation component
+        //this.userService.reloadNavbar();
+
         // stop spinner
         this.isSpinning = false
       }, error => {
-        console.log(error)
         this.snackBar.open(`${error.error.msg}`, `Close`, {
           duration: 8000,
           panelClass: ['error']
@@ -58,18 +69,18 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      firstname: new FormControl('', {
+      name: new FormControl('', {
         validators:
           [
             Validators.required,
           ], updateOn: 'change'
       }),
-      lastname: new FormControl('', {
+      /* lastname: new FormControl('', {
         validators:
           [
             Validators.required,
           ], updateOn: 'change'
-      }),
+      }), */
       phone: new FormControl('', {
         validators:
           [

@@ -1,9 +1,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SigninComponent } from './../../auth/signin/signin.component';
-import {AuthService} from './../../auth/auth.service';
+import { AuthService } from './../../auth/auth.service';
 import { UserService, UserInterface } from 'src/app/common/user';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'splaxh-nav',
@@ -15,29 +16,31 @@ export class NavComponent implements OnInit, OnDestroy {
   // init subscriptions list
   subscriptions: Subscription[] = [];
   @Input() deviceXs: boolean;
-  user: UserInterface | null;
+  user: UserInterface;
 
   constructor(
     public dialog: MatDialog,
+    private router: Router,
     public authService: AuthService,
     private userService: UserService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.authService.isLoggedIn())
     if (this.authService.isLoggedIn()) {
-      this.getUser()
+      this.user = this.getUser();
+      //console.log(this.getUser())
+    }
+
+    // call refresh method from event emitter service
+    if (this.userService.subsVar == undefined) {
+      this.userService.subsVar = this.userService.reload.subscribe(() => {
+        this.ngOnInit();
+      });
     }
   }
 
   private getUser() {
-    this.subscriptions.push(
-      this.userService.currentUser.subscribe( (user: UserInterface)  => {
-        console.log(user)
-      }, error => {
-        console.log(error)
-      })
-    )
+    return JSON.parse(this.userService.currentUser())
   }
 
   openDialog(): void {
@@ -53,17 +56,21 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   signOut() {
-    localStorage.removeItem('token')
-   /*  // push into list
+    // push into list
     this.subscriptions.push(
       this.authService.signOut().subscribe(res => {
         if (res.code === 200) {
           localStorage.removeItem('token')
+          localStorage.removeItem('susr')
+          this.router.navigate(['/']);
         }
       }, error => {
-        console.error(error);
+        //console.error(error);
+        localStorage.removeItem('token')
+        localStorage.removeItem('susr')
+        this.router.navigate(['/']);
       })
-    ) */
+    )
   }
 
   ngOnDestroy() {

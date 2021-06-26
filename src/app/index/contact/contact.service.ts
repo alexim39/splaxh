@@ -2,21 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
-import { ServerResponse } from './../common/server/response.interface';
+import { ServerResponse } from './../../common/server/response.interface';
 import { environment } from 'src/environments/environment';
 
 
-export interface SignUpInterface {
+export interface ContactInterface {
   name: string;
   email: string;
-  password: string;
-  tnc: boolean;
+  phone: string;
+  comment: string;
 }
 
-export interface SignInInterface {
-  email: string;
-  password: string;
-}
 
 const httpOptions = {
   withCredentials: true,
@@ -28,7 +24,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class ContactService {
   private API_DOMAIN: string = environment.API_DOMAIN;
 
   constructor(private http: HttpClient) { }
@@ -48,32 +44,13 @@ export class AuthService {
     // return throwError(`Something went wrong, please try again.`)
   }
 
-  isLoggedIn(): boolean {
-    // return true if token exist or false if otherwise
-    return !!localStorage.getItem('token');
-  }
 
-  signUp(signUpObj: SignUpInterface): Observable<ServerResponse> {
-    return this.http.post<ServerResponse>(`${this.API_DOMAIN}/api/auth/signup`, signUpObj, httpOptions)
+  contacts(contactObj: ContactInterface): Observable<ServerResponse> {
+    return this.http.post<ServerResponse>(`${this.API_DOMAIN}/api/contact`, contactObj, httpOptions)
       .pipe(
         retry(2), // retry a failed request up to 2 times
         catchError(this.handleError)
       );
   }
 
-  signIn(signInObj: SignInInterface): Observable<ServerResponse> {
-    return this.http.post<ServerResponse>(`${this.API_DOMAIN}/api/auth/signin`, signInObj, httpOptions)
-      .pipe(
-        //retry(2), // retry a failed request up to 2 times
-        catchError(this.handleError)
-      );
-  }
-
-  signOut(): Observable<ServerResponse> {
-    return this.http.get<ServerResponse>(`${this.API_DOMAIN}/api/auth/signout`, httpOptions)
-      .pipe(
-        retry(2), // retry a failed request up to 2 times
-        catchError(this.handleError)
-      );
-  }
 }

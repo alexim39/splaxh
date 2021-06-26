@@ -17,14 +17,19 @@ section {
             margin-top: 12px;
         }
     }
-    mat-card {
-        margin: 1rem 0;
-        form {
-            width: 40rem;
-            padding: 3rem;
-            mat-form-fiel {
-                width: 100%;
+    aside {
+        width: 100%;
+        margin: 2rem 0;
+        mat-accordion {
+            width: 50rem;
+            mat-expansion-panel {
+                mat-expansion-panel-header {
+                    mat-panel-title {
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }
+   
 }

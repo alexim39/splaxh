@@ -5,7 +5,8 @@ import { IndexComponent } from './index.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignupComponent } from '../auth/signup/signup.component';
 import { UploadsComponent } from './uploads/uploads.component';
-
+import { AuthGuard } from '../auth/auth.guard';
+import {FaqComponent} from './faq/faq.component';
 
 const routes: Routes = [
   {
@@ -13,8 +14,9 @@ const routes: Routes = [
     children: [
       { path: '', component: IndexContentComponent },
       { path: 'contacts', component: ContactComponent },
+      { path: 'faqs', component: FaqComponent },
       { path: 'signup', component: SignupComponent },
-      { path: 'uploads', component: UploadsComponent }
+      { path: 'uploads', component: UploadsComponent, canActivate:  [AuthGuard]}
     ]
   }
 ];
