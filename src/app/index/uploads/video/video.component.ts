@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UploadsService, VideoInterface } from '../uploads.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'splaxh-video',
@@ -21,6 +22,7 @@ export class VideoComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private userService: UserService,
+    private router: Router,
     private snackBar: MatSnackBar,
     private uploadsService: UploadsService
   ) { }
@@ -85,6 +87,8 @@ export class VideoComponent implements OnInit, OnDestroy {
           }
           // stop spinner
           this.isSpinning = false
+
+          this.router.navigate(['/payment']);
       }, error => {
         this.snackBar.open(`${error.error.msg}`, `Close`, {
           duration: 8000,

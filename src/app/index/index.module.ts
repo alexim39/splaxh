@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BannerComponent } from './index-content/banner/banner.component';
 import { CountdownComponent } from './index-content/countdown/countdown.component';
 import { SupportersComponent } from './index-content/supporters/supporters.component';
-import { MatCarouselModule } from '@ngbmodule/material-carousel';
+//import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { AuthModule } from './../auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { UploadsComponent } from './uploads/uploads.component';
@@ -24,7 +24,9 @@ import { AudioComponent } from './uploads/audio/audio.component';
 import { VideoComponent } from './uploads/video/video.component';
 import { UploadsService } from './uploads/uploads.service';
 import { ContactService } from './contact/contact.service';
-
+import { PaymentComponent } from './payment/payment.component';
+import { ProfileComponent } from './profile/profile.component';
+//import { AngularFileUploaderModule } from "angular-file-uploader";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ContactService } from './contact/contact.service';
     FaqComponent,
     AudioComponent,
     VideoComponent,
+    PaymentComponent,
+    ProfileComponent,
 
   ],
   imports: [
@@ -50,9 +54,10 @@ import { ContactService } from './contact/contact.service';
     LogoModule,
     IndexRoutingModule,
     ReactiveFormsModule,
-    MatCarouselModule.forRoot(),
+    //MatCarouselModule.forRoot(),
     AuthModule,
-    RouterModule
+    RouterModule,
+    //AngularFileUploaderModule
   ],
   providers: [AuthGuard, UploadsService, ContactService]
 })

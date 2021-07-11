@@ -41,14 +41,6 @@
                     <mat-option value="Reggae">Reggae</mat-option>
                     <mat-option value="Rock">Rock</mat-option>
                     <mat-option value="Other">Other</mat-option>
-                    <!-- <mat-option></mat-option>
-                    <mat-option></mat-option>
-                    <mat-option></mat-option>
-                    <mat-option></mat-option>
-                    <mat-option></mat-option>
-                    <mat-option></mat-option>
-                    <mat-option></mat-option>
-                    <mat-option></mat-option> -->
                 </mat-select>
             </mat-form-field>
             
@@ -57,14 +49,24 @@
                 <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
 
-            <label for="myfile">Select a file:</label>
-            <input type="file" id="audio" name="audio" (change)="onChange($event)" formControlName="audioFile" accept=".mp3,audio/*">
-            <br>
 
             <button mat-raised-button color="primary" [disabled]="form.invalid || isSpinning">
                 <img *ngIf="isSpinning" src="./../../../../assets/img/spinner.gif">
-                SUBMIT AUDIO
+                SUBMIT DETAILS
             </button>
         </form>
+    </mat-card>
+
+    <mat-card style="width: 50%;">
+        <div>Upload audio file below:</div>
+        <input type="file" accept=".mp3,audio/*" #fileInput>
+
+        <button mat-raised-button color="primary" (click)="onFileUpload()">
+            SUBMIT AUDIO
+        </button>
+
+        <!-- <angular-file-uploader
+            [config]="afuConfig">
+        </angular-file-uploader> -->
     </mat-card>
 </section>

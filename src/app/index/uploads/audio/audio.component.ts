@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from './../../../auth/auth.service';
 import { UserService, UserInterface } from 'src/app/common/user';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UploadsService, AudioInterface } from '../uploads.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'splaxh-audio',
@@ -17,12 +18,14 @@ export class AudioComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   form: FormGroup;
   isSpinning = false;
-  file: File;
+
+  @ViewChild('fileInput', {static: false}) fileInput: ElementRef;
 
   constructor(
     public authService: AuthService,
     private userService: UserService,
     private snackBar: MatSnackBar,
+    private router: Router,
     private uploadsService: UploadsService
   ) { }
 
@@ -57,12 +60,12 @@ export class AudioComponent implements OnInit, OnDestroy {
             Validators.required,
           ], updateOn: 'change'
       }),
-      audioFile: new FormControl('', {
+      /* audioFile: new FormControl('', {
         validators:
           [
             Validators.required,
           ], updateOn: 'change'
-      }),
+      }), */
     })
   }
 
@@ -70,29 +73,10 @@ export class AudioComponent implements OnInit, OnDestroy {
     return JSON.parse(this.userService.currentUser())
   }
 
-  // On file Select
-  onChange(event: any) {
-    //
-    if (event.target.files.length > 0) {
-      this.file = <File>event.target.files[0];
-    }
-}
-
   onSubmit(audioObj: AudioInterface) {
     this.isSpinning = true;
 
-    audioObj['file'] = this.file;
-
-        
-    //const formData: FormData = new FormData();
-
-    //formData.append('file', this.file, this.file.name);
-    /* formData.append('userId', audioObj.userId);
-    formData.append('stageName', audioObj.stageName);
-    formData.append('trackCategory', audioObj.trackCategory);
-    formData.append('trackTitle', audioObj.trackTitle);
-    formData.append('description', audioObj.description); */
-
+    audioObj['userId'] = this.user._id;
   
     this.subscriptions.push(
       this.uploadsService.audioUpload(audioObj).subscribe(res => {
@@ -111,6 +95,33 @@ export class AudioComponent implements OnInit, OnDestroy {
         });
         // stop spinner
         this.isSpinning = false
+      })
+    )
+  }
+
+  onFileUpload() {
+    const imgBlob = this.fileInput.nativeElement.files[0];
+
+    const file = new FormData();
+    file.set('file', imgBlob);
+
+    this.subscriptions.push(
+      this.uploadsService.audioUploadFile(file).subscribe(res => {
+
+        if (res.code === 200) {
+          this.snackBar.open(`${res.msg}`, `Close`, {
+            duration: 8000,
+            panelClass: ['success']
+          });
+        }
+
+        this.router.navigate(['/payment']);
+      }, error => {
+
+        this.snackBar.open(`${error.error.msg}`, `Close`, {
+          duration: 8000,
+          panelClass: ['error']
+        });
       })
     )
   }

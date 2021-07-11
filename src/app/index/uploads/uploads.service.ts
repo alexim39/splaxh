@@ -12,7 +12,6 @@ export interface AudioInterface {
   trackTitle: string;
   trackCategory: string;
   description: string;
-  file: File;
 }
 
 export interface VideoInterface {
@@ -23,13 +22,6 @@ export interface VideoInterface {
     description: string;
     youtubeURL: string
     
-}
-
-const httpAdudioOptions = {
-  withCredentials: true,
-  headers: new HttpHeaders({
-    'Content-Type': 'multipart/form-data'
-  })
 }
 
 const httpOptions = {
@@ -63,9 +55,16 @@ export class UploadsService {
   }
 
 
+  audioUploadFile(audioFile: any): Observable<ServerResponse> {
+    return this.http.post<ServerResponse>(`${this.API_DOMAIN}/api/upload/audioFile`, audioFile)
+      .pipe(
+        retry(2), // retry a failed request up to 2 times
+        catchError(this.handleError)
+      );
+  }
+
   audioUpload(audioObj: AudioInterface): Observable<ServerResponse> {
-    console.log(audioObj)
-    return this.http.post<ServerResponse>(`${this.API_DOMAIN}/api/upload/audio`, audioObj, httpOptions)
+    return this.http.post<ServerResponse>(`${this.API_DOMAIN}/api/upload/audioObj`, audioObj, httpOptions)
       .pipe(
         retry(2), // retry a failed request up to 2 times
         catchError(this.handleError)

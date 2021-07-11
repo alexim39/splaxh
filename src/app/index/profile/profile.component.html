@@ -1,0 +1,19 @@
+<section fxLayout="column" fxLayoutAlign="center center">
+    <header>
+        <div class="head">PROFILE DASHBOARD</div>
+        <div class="body">See updates from dashboard</div>
+    </header>
+
+    <aside fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5" fxLayout.xs="column">
+        <div class="menu" fxFlex="30" fxLayout="column">
+            <a [routerLink]="['/profile']">Profile</a>
+            <a [routerLink]="['/uploads']">Upload Music</a>
+            <a (click)="signOut()">Sign out</a>
+        </div>
+
+        <div class="content" fxFlex="70">
+            contents
+        </div>
+    </aside>
+
+</section>
