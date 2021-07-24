@@ -26,6 +26,8 @@ import { UploadsService } from './uploads/uploads.service';
 import { ContactService } from './contact/contact.service';
 import { PaymentComponent } from './payment/payment.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PolicyComponent } from './policy/policy.component';
+import { TermsComponent } from './terms/terms.component';
 //import { AngularFileUploaderModule } from "angular-file-uploader";
 
 @NgModule({
@@ -45,6 +47,8 @@ import { ProfileComponent } from './profile/profile.component';
     VideoComponent,
     PaymentComponent,
     ProfileComponent,
+    PolicyComponent,
+    TermsComponent,
 
   ],
   imports: [

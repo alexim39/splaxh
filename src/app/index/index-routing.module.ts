@@ -9,6 +9,8 @@ import { AuthGuard } from '../auth/auth.guard';
 import {FaqComponent} from './faq/faq.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PolicyComponent } from './policy/policy.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   {
@@ -19,8 +21,10 @@ const routes: Routes = [
       { path: 'faqs', component: FaqComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'uploads', component: UploadsComponent, canActivate:  [AuthGuard]},
-      { path: 'payment', component: PaymentComponent },
+      { path: 'payment', component: PaymentComponent, canActivate:  [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate:  [AuthGuard] },
+      { path: 'terms', component: TermsComponent },
+      { path: 'policy', component: PolicyComponent },
       
     ]
   }

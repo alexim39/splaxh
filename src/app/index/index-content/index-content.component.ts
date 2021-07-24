@@ -15,9 +15,6 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [`
     video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
       min-width: 100%; 
       min-height: 100%;
       background: rgba(0, 0, 0, 0.9);

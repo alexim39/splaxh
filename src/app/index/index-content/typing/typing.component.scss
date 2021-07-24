@@ -1,13 +1,13 @@
 header {
-    height: 6rem;
+    height: 5rem;
     color: #f1f1f1;
-    position: fixed;
-    bottom: 70px;
+    position: absolute;
+    bottom: 1px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    //background: rgba(0, 0, 0, 0.5);
     div {
         font-family: "Courier";
-        font-size: 20px;
+        font-size: 1.2rem;
     }
 }
 

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `<a [routerLink]="['/']">
               <span>
                   <mat-icon>subscriptions </mat-icon>
-                  SplaxH
+                  Tinotune
               </span>
             </a>
             `,

@@ -13,7 +13,7 @@ export class TypingComponent implements OnInit, AfterViewInit {
   @ViewChild("textElement") textElement: ElementRef;
   @ViewChild("blinkElement") blinkElement: ElementRef;
   @Input() wordArray: string[] = [
-    " you get the opportunity to win 1M every saturday.    ",
+    " you get the opportunity to get connected to superstars in Nigeria.    ",
     " you upload your music to get selected for a life time deal.     ",
     //" Get help with accademic work from fellow students.     ",
     //" Get links to helpful  academic resources.     ",

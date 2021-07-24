@@ -1,13 +1,13 @@
  <footer fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column" fxLayoutGap.xs="1rem">
-  <div class="copyright" fxFlex="50" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
-    <a href="#">Terms of service</a>
-    <a href="">Privacy</a>
-    <a href="">Cookies</a>
-    <div>&copy; SplaxH.com</div>
+  <div class="copyright" fxFlex="50" fxFlex.xs="100" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
+    <a [routerLink]="['/terms']">Terms of service</a>
+    <a [routerLink]="['/policy']">Policies</a>
+    <!-- <a href="">Cookies</a> -->
+    <div>&copy; tinotune.com</div>
   </div>
 
 
-  <div class="socials" fxFlex="12" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="1rem" fxLayoutGap.xs="1rem">
+  <div class="socials" fxFlex="12" fxFlex.xs="100" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="1rem" fxLayoutGap.xs="1rem">
       <button mat-mini-fab class="facebook">
         <mat-icon>facebook</mat-icon>
       </button>

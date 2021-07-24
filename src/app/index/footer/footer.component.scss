@@ -1,14 +1,8 @@
 footer {
     height: auto;
     padding: 1rem 0;
-    //background-color: #283593;
-    //border-top: 1px solid rgb(92, 91, 91);
     background: rgba(0, 0, 0, 0.5);
-    
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    width: auto;
     .copyright {
         a {
             text-decoration: none;
